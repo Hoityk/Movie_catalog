@@ -1,5 +1,4 @@
 # catalog.py (main.py)
-# Laboratory work #4 — integration with MySQL
 
 import sys
 from db.movies_repository import (
@@ -12,7 +11,6 @@ from db.movies_repository import (
 )
 
 def list_movies():
-    """Print all movies from DB"""
     movies = get_all_movies()
 
     print("\nAll movies:")
@@ -21,26 +19,24 @@ def list_movies():
         return
 
     for m in movies:
-        print(f"{m['id']}. {m['title']} ({m['year']}) — {m['genre']} — ⭐ {m['rating']}")
+        print(f"{m['id']}.{m['title']}({m['year']})-{m['genre']}-⭐{m['rating']}")
     print()
 
 
 def search_movie():
-    """Search movie by title in DB"""
     query = input("Enter title to search: ").lower()
     results = search_movies(query)
 
     print("\nSearch results:")
     if results:
         for m in results:
-            print(f"{m['id']}. {m['title']} — ⭐ {m['rating']}")
+            print(f"{m['id']}.{m['title']}-⭐{m['rating']}")
     else:
         print("Nothing found.")
     print()
 
 
 def filter_by_genre():
-    """Filter by genre (Python side)"""
     genre = input("Enter genre: ").capitalize()
     movies = get_all_movies()
     results = [m for m in movies if m["genre"] == genre]
@@ -48,14 +44,13 @@ def filter_by_genre():
     print(f"\nMovies of genre {genre}:")
     if results:
         for m in results:
-            print(f"{m['id']}. {m['title']} — ⭐ {m['rating']}")
+            print(f"{m['id']}.{m['title']}-⭐{m['rating']}")
     else:
         print("Nothing found.\n")
     print()
 
 
 def show_movie_details():
-    """Show movie details from DB"""
     movie_id = int(input("Enter movie ID: "))
     movie = get_movie_by_id(movie_id)
 
@@ -71,7 +66,6 @@ def show_movie_details():
 
 
 def add_movie_ui():
-    """Add a new movie to MySQL"""
     print("\nAdd movie")
     title = input("Title: ")
     year = int(input("Year: "))
@@ -92,14 +86,12 @@ def add_movie_ui():
 
 
 def delete_movie_ui():
-    """Delete movie from DB"""
     movie_id = int(input("Enter movie ID to delete: "))
     delete_movie(movie_id)
     print("Movie deleted (if existed).\n")
 
 
 def update_movie_ui():
-    """Update movie in DB"""
     movie_id = int(input("Movie ID to update: "))
     movie = get_movie_by_id(movie_id)
 
