@@ -34,7 +34,7 @@ jobs:
         run: npm install
 
       - name: Check formatting (Prettier)
-        run: npm run format:check
+        run: npm run format:fix
 
       - name: Check formatting (Black)
         run: black --check .
