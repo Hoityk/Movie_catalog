@@ -25,6 +25,17 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pylint black
 
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Prettier
+        run: npm install
+
+      - name: Check formatting (Prettier)
+        run: npm run format:check
+
       - name: Check formatting (Black)
         run: black --check .
 
@@ -36,6 +47,7 @@ jobs:
 
       - name: Validate commit messages
         uses: webiny/action-conventional-commits@v1.3.0
+
 
   prettier:
     name: Prettier Style Check
