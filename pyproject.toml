@@ -1,6 +1,21 @@
 [tool.black]
 line-length = 88
 target-version = ["py311"]
+exclude = '''
+(
+    env
+  | env1
+  | venv
+  | \.venv
+  | __pycache__
+  | db
+  | site-packages
+  | \.git
+  | \.github
+  | build
+  | dist
+)
+'''
 
 [tool.isort]
 profile = "black"
