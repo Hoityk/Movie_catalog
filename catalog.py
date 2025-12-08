@@ -151,7 +151,7 @@ def main():
             update_movie_ui()
         elif choice == "0":
             print("Exiting...")
-            sys.exit()
+            return
         else:
             print("Invalid choice!\n")
 
