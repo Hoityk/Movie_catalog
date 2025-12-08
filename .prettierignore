@@ -15,3 +15,5 @@ tests/
 .github/
 README.md
 *.md
+index.html
+Movie_catalog/index.html
